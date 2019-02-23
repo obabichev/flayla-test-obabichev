@@ -23,10 +23,16 @@ export class QuestionsListComponent extends Component {
         }
     };
 
+    onDownloadMoreClick = (event) => {
+        const {getQuestionsList, categoryId, questionsToDownloadCount} = this.props;
+
+        getQuestionsList(categoryId, questionsToDownloadCount);
+    };
+
     render() {
         return <div>
-            QuestionsListComponent
             {this.renderQuestions()}
+            {this.renderDownloadMoreButton()}
         </div>;
     }
 
@@ -55,7 +61,19 @@ export class QuestionsListComponent extends Component {
         </div>;
     };
 
+    renderDownloadMoreButton = () => {
+        const {questionsToDownloadCount} = this.props;
+        if (!questionsToDownloadCount > 0) {
+            return null;
+        }
+        return <button onClick={this.onDownloadMoreClick}>
+            {questionsToDownloadCount} more...
+        </button>;
+    };
+
     static propTypes = {
-        categoryId: PropTypes.number.isRequired
+        categoryId: PropTypes.number.isRequired,
+        questions: PropTypes.array.isRequired,
+        questionsToDownloadCount: PropTypes.number.isRequired
     };
 }

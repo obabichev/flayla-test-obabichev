@@ -1,10 +1,8 @@
 import {getLocalSession} from '../helpers/localStorage/session';
 import {getRequest} from './rest/rest';
+import {DEFAULT_DOWNLOAD_QUESTION_AMOUNT} from '../selectors/questions';
 
-const DEFAULT_QUESTION_AMOUNT = 5;
-
-export const getQuestionsListService = (categoryId, amount = DEFAULT_QUESTION_AMOUNT) => {
-    //https://opentdb.com/api.php?amount=2&category=13&token=a102e2152324d0ba5a278d7e9e96c41f07877341243dce415d5fc267c3a2da0d
+export const getQuestionsListService = (categoryId, amount = DEFAULT_DOWNLOAD_QUESTION_AMOUNT) => {
     const {token} = getLocalSession();
 
     const params = {
@@ -14,4 +12,8 @@ export const getQuestionsListService = (categoryId, amount = DEFAULT_QUESTION_AM
     };
 
     return getRequest('/api.php', params);
+};
+
+export const getGlobalQuestionsCountService = () => {
+    return getRequest('/api_count_global.php');
 };
