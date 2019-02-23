@@ -1,11 +1,29 @@
 import React, {Component} from 'react';
+import {MainRouter} from '../router/MainRouter';
 
 export class BlankScreenComponent extends Component {
 
+    componentDidMount() {
+        const {session, retrieveSessionToken} = this.props;
+        if (!session) {
+            retrieveSessionToken();
+        }
+    }
+
     render() {
-        return <div>
-            BlankScreenComponent
-        </div>;
+        const {session} = this.props;
+
+        console.log('[obabichev] BlankScreenComponent.props', this.props);
+
+        //TODO choose between empty screen and main router is not task of BlankScreenComponent
+
+        if (!session) {
+            return <div>
+                BlankScreenComponent
+            </div>;
+        }
+
+        return <MainRouter/>;
     }
 
 }
