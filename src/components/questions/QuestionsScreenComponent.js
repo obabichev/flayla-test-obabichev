@@ -25,8 +25,6 @@ export class QuestionsScreenComponent extends Component {
         const {categoriesSelectInput} = this.props;
 
         return <div>
-            QuestionsList
-
             <Select
                 value={selectedOption}
                 onChange={this.handleChange}

@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {limitStr} from '../../util/strings';
+import './QuestionsListComponent.css';
+import he from 'he';
 
 export class QuestionsListComponent extends Component {
 
@@ -39,7 +42,11 @@ export class QuestionsListComponent extends Component {
     renderQuestions = () => {
         const {questions} = this.props;
 
-        return questions.map(this.renderQuestionCard);
+        return <table className="questions-list__table">
+            <tbody >
+            {questions.map(this.renderQuestionCard)}
+            </tbody>
+        </table>;
     };
 
     /**
@@ -53,12 +60,12 @@ export class QuestionsListComponent extends Component {
      * @return {XML}
      */
     renderQuestionCard = ({category, difficulty, question}) => {
-        return <div key={question}>
-            Question!
-            {question}
-            {category}
-            {difficulty}
-        </div>;
+        return <tr key={question}
+                   className="questions-list__table-row">
+            <td className="questions-list__table-cell">{limitStr(he.decode(question))}</td>
+            <td className="questions-list__table-cell">{limitStr(he.decode(category))}</td>
+            <td className="questions-list__table-cell">{he.decode(difficulty)}</td>
+        </tr>;
     };
 
     renderDownloadMoreButton = () => {

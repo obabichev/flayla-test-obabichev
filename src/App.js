@@ -5,10 +5,12 @@ import {BlankScreenContainer} from './containers/blank/BlankScreenContainer';
 
 class App extends Component {
     render() {
-        return <div>
-            <Store>
-                <BlankScreenContainer/>
-            </Store>
+        return <div className="app__content-container">
+            <div className="app__content">
+                <Store>
+                    <BlankScreenContainer/>
+                </Store>
+            </div>
         </div>;
     }
 }

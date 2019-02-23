@@ -1,0 +1,8 @@
+.app__content-container {
+    display: flex;
+    justify-content: center;
+}
+
+.app__content {
+    width: 600px;
+}
