@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import {Redirect, Route, Router, Switch} from 'react-router-dom';
 import {QuestionDetailsComponent} from '../questions/QuestionDetailsComponent';
-import {createBrowserHistory} from 'history';
 import {PageNotFount} from './PageNotFount';
 import {QuestionsScreenContainer} from '../../containers/questions/QuestionsScreenContainer';
-
-export const history = createBrowserHistory();
+import {history} from '../../helpers/history/history';
 
 export class MainRouter extends Component {
     render() {
@@ -15,7 +13,7 @@ export class MainRouter extends Component {
                 <Route exact path="/">
                     <Redirect to="/questions"/>
                 </Route>
-                <Route exact path="/question" component={QuestionDetailsComponent}/>
+                <Route exact path="/question/:questionId([\d]+)" component={QuestionDetailsComponent}/>
                 <Route component={PageNotFount}/>
             </Switch>
         </Router>;

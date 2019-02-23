@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {limitStr} from '../../util/strings';
 import './QuestionsListComponent.css';
 import he from 'he';
+import {navigateForward} from '../../helpers/history/history';
 
 export class QuestionsListComponent extends Component {
 
@@ -26,10 +27,14 @@ export class QuestionsListComponent extends Component {
         }
     };
 
-    onDownloadMoreClick = (event) => {
+    onDownloadMoreClick = event => {
         const {getQuestionsList, categoryId, questionsToDownloadCount} = this.props;
 
         getQuestionsList(categoryId, questionsToDownloadCount);
+    };
+
+    onQuestionCardClick = id => event => {
+        navigateForward(`/question/${id}`);
     };
 
     render() {
@@ -49,19 +54,10 @@ export class QuestionsListComponent extends Component {
         </table>;
     };
 
-    /**
-     * Unfortunately question have no id,
-     * I will use as a key for react components 'question' field from questions,
-     * but in the case of duplicated questions we will have a problem...
-     *
-     * @param category
-     * @param difficulty
-     * @param question
-     * @return {XML}
-     */
-    renderQuestionCard = ({category, difficulty, question}) => {
-        return <tr key={question}
-                   className="questions-list__table-row">
+    renderQuestionCard = ({id, category, difficulty, question}) => {
+        return <tr key={id}
+                   className="questions-list__table-row"
+                   onClick={this.onQuestionCardClick(id)}>
             <td className="questions-list__table-cell">{limitStr(he.decode(question))}</td>
             <td className="questions-list__table-cell">{limitStr(he.decode(category))}</td>
             <td className="questions-list__table-cell">{he.decode(difficulty)}</td>

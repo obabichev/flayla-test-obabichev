@@ -2,6 +2,7 @@ import {getLocalSession} from '../helpers/localStorage/session';
 import {getRequest} from './rest/rest';
 import {DEFAULT_DOWNLOAD_QUESTION_AMOUNT} from '../selectors/questions';
 
+
 export const getQuestionsListService = (categoryId, amount = DEFAULT_DOWNLOAD_QUESTION_AMOUNT) => {
     const {token} = getLocalSession();
 
