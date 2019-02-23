@@ -21,7 +21,6 @@ const request = ({url, method, body, params}) => {
 };
 
 const joinParams = params => {
-    console.log('[obabichev] params', params);
     return Object.keys(params).map(key => key + '=' + params[key]).join('&');
 };
 

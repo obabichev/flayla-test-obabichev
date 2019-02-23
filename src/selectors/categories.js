@@ -1,5 +1,7 @@
 import {createSelector} from 'reselect';
 
+export const categoryIdPropsSelector = (state, props) => props.categoryId;
+
 export const categoriesSelector = (state) => state.categories;
 
 export const categoriesSelectInputSelector = createSelector(

@@ -13,8 +13,6 @@ export class BlankScreenComponent extends Component {
     render() {
         const {session} = this.props;
 
-        console.log('[obabichev] BlankScreenComponent.props', this.props);
-
         //TODO choose between empty screen and main router is not task of BlankScreenComponent
 
         if (!session) {
