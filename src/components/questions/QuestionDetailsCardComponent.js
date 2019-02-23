@@ -12,8 +12,6 @@ export class QuestionDetailsCardComponent extends Component {
     };
 
     render() {
-        console.log('[obabichev] QuestionDetailsCardComponent.props', this.props);
-
         const {question} = this.props;
 
         if (!question) {
@@ -64,7 +62,7 @@ export class QuestionDetailsCardComponent extends Component {
 
     renderWrongAnswer = (answer, index) => {
         return <div key={index}>
-            {answer}
+            {he.decode(answer)}
         </div>;
     };
 
@@ -86,11 +84,3 @@ export class QuestionDetailsCardComponent extends Component {
 
     isMultipleChoiceQuestion = (question) => question.type === 'multiple';
 }
-
-// category: "Entertainment: Television"
-// correct_answer: "Screech"
-// difficulty: "easy"
-// id: 2
-// incorrect_answers: (3) ["Zack", "Mr. Belding", "A.C. Slater"]
-// question: "Which character was played by Dustin Diamond in the sitcom &#039;Saved by the Bell&#039;?"
-// type: "multiple"

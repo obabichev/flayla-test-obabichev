@@ -36,8 +36,6 @@ export const questionsToDownloadCountByCategoryIdSelector = createSelector(
 export const questionByIdSelector = createSelector(
     [questionIdPropsSelector, questionsByCategoryIdsSelector],
     (questionId, questions) => {
-        console.log('[obabichev] questionId', questionId);
-        console.log('[obabichev] questions', questions);
         return _.find(_.flatten(_.values(questions)), {id: questionId});
     }
 );

@@ -1,0 +1,9 @@
+.footer__container {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    text-align: center;
+    justify-content: center;
+    color: gray;
+    font-size: 12px;
+    line-height: 1.5;
+}

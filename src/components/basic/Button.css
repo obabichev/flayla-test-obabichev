@@ -1,0 +1,12 @@
+.button-basic {
+    width: 100%;
+    color: #ffffff;
+    border: 1px solid rgba(27, 31, 35, .2);
+    border-radius: .25em;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 5px 10px;
+    background: #28a745 linear-gradient(-180deg, #34d058, #28a745 90%);
+}

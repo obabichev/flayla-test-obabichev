@@ -4,6 +4,7 @@ import {limitStr} from '../../util/strings';
 import './QuestionsListComponent.css';
 import he from 'he';
 import {navigateForward} from '../../helpers/history/history';
+import {Button} from '../basic/Button';
 
 export class QuestionsListComponent extends Component {
 
@@ -69,9 +70,9 @@ export class QuestionsListComponent extends Component {
         if (!questionsToDownloadCount > 0) {
             return null;
         }
-        return <button onClick={this.onDownloadMoreClick}>
+        return <Button onClick={this.onDownloadMoreClick}>
             {questionsToDownloadCount} more...
-        </button>;
+        </Button>;
     };
 
     static propTypes = {

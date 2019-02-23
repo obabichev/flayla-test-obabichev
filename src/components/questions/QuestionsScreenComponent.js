@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import Select from 'react-select';
 import {QuestionsListContainer} from '../../containers/questions/QuestionsListContainer';
+import _ from 'lodash';
+import {navigateForward} from '../../helpers/history/history';
+import './QuestionsScreenComponent.css';
+
 
 export class QuestionsScreenComponent extends Component {
 
@@ -12,12 +16,25 @@ export class QuestionsScreenComponent extends Component {
         const {getCategoriesList} = this.props;
 
         getCategoriesList();
+
+        this.findSelectedValue();
     }
+
+    findSelectedValue = () => {
+        const {categoriesSelectInput, match} = this.props;
+
+        const categoryId = parseInt(_.get(match, 'params.categoryId'));
+
+        const selectedOption = _.find(categoriesSelectInput, {value: categoryId}) || null;
+        this.setState({selectedOption});
+    };
 
     handleChange = (selectedOption) => {
 
-        this.setState({selectedOption});
-        console.log(`Option selected:`, selectedOption);
+        if (selectedOption.value !== _.get(this.state, 'selectedOption.value')) {
+            this.setState({selectedOption});
+            navigateForward(`/questions/${selectedOption.value}`);
+        }
     };
 
     render() {
@@ -25,21 +42,22 @@ export class QuestionsScreenComponent extends Component {
         const {categoriesSelectInput} = this.props;
 
         return <div>
-            <Select
-                value={selectedOption}
-                onChange={this.handleChange}
-                options={categoriesSelectInput}
-            />
-
+            <div className="questions-screen__select-container">
+                <Select
+                    value={selectedOption}
+                    onChange={this.handleChange}
+                    options={categoriesSelectInput}
+                />
+            </div>
             {this.renderQuestionsList()}
-        </div>;
+        </div>
     }
 
     renderQuestionsList = () => {
         const {selectedOption} = this.state;
 
         if (!selectedOption) {
-            return <div>CHOOOOSE SMTH</div>;
+            return null;
         }
 
         const categoryId = selectedOption.value;

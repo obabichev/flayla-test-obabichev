@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {MainRouter} from '../router/MainRouter';
+import {FooterComponent} from './FooterComponent';
 
 export class BlankScreenComponent extends Component {
 
@@ -11,6 +12,14 @@ export class BlankScreenComponent extends Component {
     }
 
     render() {
+
+        return <div>
+            {this.renderContent()}
+            <FooterComponent/>
+        </div>;
+    }
+
+    renderContent = () => {
         const {session} = this.props;
 
         //TODO choose between empty screen and main router is not task of BlankScreenComponent
@@ -23,5 +32,4 @@ export class BlankScreenComponent extends Component {
 
         return <MainRouter/>;
     }
-
 }

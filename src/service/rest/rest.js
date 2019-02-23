@@ -3,7 +3,6 @@ const baseUrl = 'https://opentdb.com';
 const request = ({url, method, body, params}) => {
 
     const fullUrl = `${url}?${joinParams(params)}`;
-    console.log('[obabichev] fullUrl', fullUrl);
 
     return fetch(fullUrl, {
         method,
