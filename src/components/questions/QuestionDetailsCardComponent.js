@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import he from 'he';
 import './QuestionDetailsCardComponent.css'
 import {Icon} from '../basic/Icon';
-import {navigateBack} from '../../helpers/history/history';
+import {navigateBack, navigateForward} from '../../helpers/history/history';
+import {Button} from '../basic/Button';
 
 export class QuestionDetailsCardComponent extends Component {
 
@@ -11,12 +12,19 @@ export class QuestionDetailsCardComponent extends Component {
         navigateBack()
     };
 
+    onHomeClock = () => {
+        navigateForward('/');
+    };
+
     render() {
         const {question} = this.props;
 
         if (!question) {
             return <div>
-                You have to open question from the table with questions
+                <div className="question-card__question-not-found">
+                    You have to open question from the table with questions
+                </div>
+                <Button onClick={this.onHomeClock}>Go home</Button>
             </div>
         }
 

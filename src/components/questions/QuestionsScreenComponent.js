@@ -14,9 +14,11 @@ export class QuestionsScreenComponent extends Component {
     };
 
     componentDidMount() {
-        const {getCategoriesList} = this.props;
+        const {getCategoriesList, categoriesSelectInput} = this.props;
 
-        getCategoriesList();
+        if (_.isEmpty(categoriesSelectInput)) {
+            getCategoriesList();
+        }
         this.updateSelectedValue();
     }
 
