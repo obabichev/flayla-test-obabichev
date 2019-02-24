@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import './ErrorModalComponent.css';
 
 export class ErrorModalComponent extends Component {
@@ -29,4 +30,8 @@ export class ErrorModalComponent extends Component {
         </div>;
     }
 
+    static propTypes = {
+        error: PropTypes.object,
+        closeHint: PropTypes.func.isRequired
+    }
 }

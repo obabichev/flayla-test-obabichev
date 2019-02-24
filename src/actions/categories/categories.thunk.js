@@ -7,6 +7,6 @@ export const getCategoriesListThunk = () => async (dispatch) => {
     const [categories, questionCounts] =
         await Promise.all([getCategoriesListService(), getGlobalQuestionsCountService()]);
 
-    dispatch(setCategoriesListAction(categories));
     dispatch(setGlobalQuestionCounts(questionCounts));
+    dispatch(setCategoriesListAction(categories));
 };

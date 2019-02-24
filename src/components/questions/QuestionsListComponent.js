@@ -91,6 +91,8 @@ export class QuestionsListComponent extends Component {
     static propTypes = {
         categoryId: PropTypes.number.isRequired,
         questions: PropTypes.array.isRequired,
-        questionsToDownloadCount: PropTypes.number.isRequired
+        questionsToDownloadCount: PropTypes.number.isRequired,
+        isLoading: PropTypes.bool,
+        getQuestionsList: PropTypes.func.isRequired
     };
 }

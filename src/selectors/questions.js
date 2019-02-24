@@ -22,7 +22,7 @@ export const questionsByCategoryIdSelector = createSelector(
 export const totalQuestionsCountByCategoryIdSelector = createSelector(
     [categoryIdPropsSelector, questionCountsSelector],
     (categoryId, questionCounts) => {
-        return questionCounts['categories'][categoryId]['total_num_of_verified_questions'];
+        return _.get(questionCounts, `categories.${categoryId}.total_num_of_verified_questions`, 0);
     }
 );
 

@@ -78,9 +78,10 @@ export class QuestionDetailsCardComponent extends Component {
         return bool ? 'Yes' : 'No';
     };
 
-    static propTypes = {
-        questionId: PropTypes.number.isRequired
-    };
-
     isMultipleChoiceQuestion = (question) => question.type === 'multiple';
+
+    static propTypes = {
+        questionId: PropTypes.number.isRequired,
+        question: PropTypes.object
+    };
 }

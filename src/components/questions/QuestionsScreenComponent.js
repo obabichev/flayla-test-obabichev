@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Select from 'react-select';
+import PropTypes from 'prop-types';
 import {QuestionsListContainer} from '../../containers/questions/QuestionsListContainer';
 import _ from 'lodash';
 import {navigateForward} from '../../helpers/history/history';
@@ -16,21 +17,30 @@ export class QuestionsScreenComponent extends Component {
         const {getCategoriesList} = this.props;
 
         getCategoriesList();
-
-        this.findSelectedValue();
+        this.updateSelectedValue();
     }
 
-    findSelectedValue = () => {
-        const {categoriesSelectInput, match} = this.props;
+    componentDidUpdate(prevProps) {
+        if (this.isCategoriesOrRouteChanged(prevProps, this.props)) {
+            this.updateSelectedValue();
+        }
+    }
 
-        const categoryId = parseInt(_.get(match, 'params.categoryId'));
+    isCategoriesOrRouteChanged = (prevProps, props) => {
+        return this.getCategoryIdFromRoute(prevProps) !== this.getCategoryIdFromRoute(props)
+            || prevProps.categoriesSelectInput !== props.categoriesSelectInput;
+    };
+
+    updateSelectedValue = () => {
+        const {categoriesSelectInput} = this.props;
+
+        const categoryId = parseInt(this.getCategoryIdFromRoute(this.props));
 
         const selectedOption = _.find(categoriesSelectInput, {value: categoryId}) || null;
         this.setState({selectedOption});
     };
 
     handleChange = (selectedOption) => {
-
         if (selectedOption.value !== _.get(this.state, 'selectedOption.value')) {
             this.setState({selectedOption});
             navigateForward(`/questions/${selectedOption.value}`);
@@ -73,8 +83,17 @@ export class QuestionsScreenComponent extends Component {
         }
 
         const categoryId = selectedOption.value;
-
         return <QuestionsListContainer
             categoryId={categoryId}/>;
-    }
+    };
+
+    getCategoryIdFromRoute = props => {
+        return _.get(props, 'match.params.categoryId', null);
+    };
+
+    static propTypes = {
+        categoriesSelectInput: PropTypes.array.isRequired,
+        isLoading: PropTypes.bool,
+        getCategoriesList: PropTypes.func.isRequired
+    };
 }

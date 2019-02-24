@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {MainRouter} from '../router/MainRouter';
 import {FooterComponent} from './FooterComponent';
 import {HorizontalLoader} from '../basic/HorizontalLoader';
@@ -42,5 +43,11 @@ export class BlankScreenComponent extends Component {
         }
 
         return <MainRouter/>;
+    };
+
+    static propTypes = {
+        session: PropTypes.object,
+        isLoading: PropTypes.bool,
+        actualizeSessionToken: PropTypes.func.isRequired
     }
 }
