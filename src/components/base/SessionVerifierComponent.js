@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {MainRouter} from '../router/MainRouter';
-import {FooterComponent} from './FooterComponent';
 import {HorizontalLoader} from '../basic/HorizontalLoader';
-import {ErrorModalContainer} from '../../containers/blank/ErrorModalContainer';
+import {FooterComponent} from './FooterComponent';
+import {ErrorModalContainer} from '../../containers/base/ErrorModalContainer';
+import {BlankScreenComponent} from './BlankScreenComponent';
 
-export class BlankScreenComponent extends Component {
+export class SessionVerifierComponent extends Component {
 
     componentDidMount() {
         const {session, actualizeSessionToken} = this.props;
@@ -35,11 +36,8 @@ export class BlankScreenComponent extends Component {
     renderContent = () => {
         const {session} = this.props;
 
-        //TODO choose between empty screen and main router is not task of BlankScreenComponent
-
         if (!session) {
-            return <div>
-            </div>;
+            return <BlankScreenComponent/>;
         }
 
         return <MainRouter/>;
@@ -50,4 +48,5 @@ export class BlankScreenComponent extends Component {
         isLoading: PropTypes.bool,
         actualizeSessionToken: PropTypes.func.isRequired
     }
+
 }

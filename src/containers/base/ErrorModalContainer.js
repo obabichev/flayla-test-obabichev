@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {ErrorModalComponent} from '../../components/blank/ErrorModalComponent';
+import {ErrorModalComponent} from '../../components/base/ErrorModalComponent';
 import {errorSelector} from '../../selectors/error';
 import {closeErrorAction} from '../../actions/error/error.actions';
 

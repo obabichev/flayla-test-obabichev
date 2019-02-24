@@ -9,7 +9,7 @@ export const getQuestionsListThunk = (categoryId, amount) => dispatch => {
             const questions = addIdsToQuestions(data['results']);
 
             if (responseCode !== 0) {
-                throw new Error('smth went wrong with getting questions');
+                throw new Error('Error of loading questions');
             }
             dispatch(setQuestionsListByCategoryId(questions, categoryId));
         });
