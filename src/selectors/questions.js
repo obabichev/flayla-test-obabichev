@@ -15,7 +15,7 @@ export const questionsByCategoryIdSelector = createSelector(
     categoryIdPropsSelector,
     questionsByCategoryIdsSelector,
     (categoryId, questions) => {
-        return questions[categoryId] || [];
+        return _.get(questions, categoryId, []);
     }
 );
 
@@ -29,7 +29,7 @@ export const totalQuestionsCountByCategoryIdSelector = createSelector(
 export const questionsToDownloadCountByCategoryIdSelector = createSelector(
     [questionsByCategoryIdSelector, totalQuestionsCountByCategoryIdSelector],
     (questions, totalQuestionsCount) => {
-        return Math.min(totalQuestionsCount - questions.length, DEFAULT_DOWNLOAD_QUESTION_AMOUNT);
+        return Math.min(totalQuestionsCount - _.size(questions), DEFAULT_DOWNLOAD_QUESTION_AMOUNT);
     }
 );
 

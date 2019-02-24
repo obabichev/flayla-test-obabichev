@@ -2,6 +2,10 @@ import {resetSessionTokenService, retrieveSessionTokenService} from '../../servi
 import {setSessionTokenAction} from './session.actions';
 import {getLocalSession, removeLocalSession, setLocalSession} from '../../helpers/localStorage/session';
 
+/**
+ * We are trying to get Token from local storage and update it,
+ * if smth went wrong just download new token
+ */
 export const actualizeSessionTokenThunk = () => dispatch => {
 
     const storedSession = getLocalSession();

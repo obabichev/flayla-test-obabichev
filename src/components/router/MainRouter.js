@@ -10,7 +10,7 @@ export class MainRouter extends Component {
         return <Router history={history}>
             <Switch>
                 <Route exact path="/questions" component={QuestionsScreenContainer}/>
-                <Route exact path="/questions/:categoryId([\d]*)" component={QuestionsScreenContainer}/>
+                <Route exact path="/questions/:categoryId([\d]+)" component={QuestionsScreenContainer}/>
                 <Route exact path="/">
                     <Redirect to="/questions"/>
                 </Route>

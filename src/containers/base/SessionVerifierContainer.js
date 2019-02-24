@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => ({
     actualizeSessionToken: () => dispatch(errorLoadingActionWrapper(actualizeSessionTokenThunk()))
 });
 
-export const ApplicationLoaderContainer = connect(mapStateToProps, mapDispatchToProps)(SessionVerifierComponent);
+export const SessionVerifierContainer = connect(mapStateToProps, mapDispatchToProps)(SessionVerifierComponent);
