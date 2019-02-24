@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {MainRouter} from '../router/MainRouter';
 import {FooterComponent} from './FooterComponent';
 import {HorizontalLoader} from '../basic/HorizontalLoader';
+import {ErrorModalContainer} from '../../containers/blank/ErrorModalContainer';
 
 export class BlankScreenComponent extends Component {
 
@@ -17,6 +18,7 @@ export class BlankScreenComponent extends Component {
             {this.renderLoader()}
             {this.renderContent()}
             <FooterComponent/>
+            <ErrorModalContainer/>
         </div>;
     }
 

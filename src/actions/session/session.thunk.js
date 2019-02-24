@@ -1,6 +1,6 @@
-import {resetSessionTokenService, retrieveSessionTokenService} from '../service/session';
+import {resetSessionTokenService, retrieveSessionTokenService} from '../../service/session';
 import {setSessionTokenAction} from './session.actions';
-import {getLocalSession, removeLocalSession, setLocalSession} from '../helpers/localStorage/session';
+import {getLocalSession, removeLocalSession, setLocalSession} from '../../helpers/localStorage/session';
 
 export const actualizeSessionTokenThunk = () => dispatch => {
 

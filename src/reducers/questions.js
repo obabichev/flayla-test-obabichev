@@ -1,4 +1,4 @@
-import {SET_QUESTIONS_LIST_BY_CATEGORY_ID} from '../actions/questions.types';
+import {SET_QUESTIONS_LIST_BY_CATEGORY_ID} from '../actions/questions/questions.types';
 export const questions = (state = {}, action = {}) => {
     const {type, payload} = action;
 

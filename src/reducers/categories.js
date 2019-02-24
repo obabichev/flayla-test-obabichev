@@ -1,4 +1,4 @@
-import {SET_CATEGORIES_LIST_ACTION} from '../actions/categories.types';
+import {SET_CATEGORIES_LIST_ACTION} from '../actions/categories/categories.types';
 export const categories = (state = [], action = {}) => {
     const {type, payload} = action;
 

@@ -3,9 +3,9 @@ import {QuestionsListComponent} from '../../components/questions/QuestionsListCo
 import {
     questionsByCategoryIdSelector, questionsToDownloadCountByCategoryIdSelector,
 } from '../../selectors/questions';
-import {getQuestionsListThunk} from '../../actions/questions.thunk';
-import {loadingActionWrapper} from '../../util/actions';
-import {QUESTIONS_LIST_LOADER_ID} from '../../actions/loading.constants';
+import {getQuestionsListThunk} from '../../actions/questions/questions.thunk';
+import {errorLoadingActionWrapper} from '../../util/actions';
+import {QUESTIONS_LIST_LOADER_ID} from '../../actions/loading/loading.constants';
 import {isLoadingSelector} from '../../selectors/loading';
 
 
@@ -17,7 +17,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     getQuestionsList: (categoryId, amount) =>
-        dispatch(loadingActionWrapper(getQuestionsListThunk(categoryId, amount), QUESTIONS_LIST_LOADER_ID))
+        dispatch(errorLoadingActionWrapper(getQuestionsListThunk(categoryId, amount), QUESTIONS_LIST_LOADER_ID))
 });
 
 export const QuestionsListContainer = connect(mapStateToProps, mapDispatchToProps)(QuestionsListComponent);

@@ -1,4 +1,4 @@
-import {LOADING_END_ACTION, LOADING_START_ACTION} from '../actions/loading.constants';
+import {LOADING_END_ACTION, LOADING_START_ACTION} from '../actions/loading/loading.constants';
 
 export const loading = (state = {}, action = {}) => {
     const {type, payload} = action;

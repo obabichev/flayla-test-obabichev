@@ -1,4 +1,4 @@
-import {SET_GLOBAL_QUESTION_COUNTS} from '../actions/questionsCount.types';
+import {SET_GLOBAL_QUESTION_COUNTS} from '../actions/questions/questionsCount.types';
 
 export const questionCounts = (state = null, action = {}) => {
     const {type, payload} = action;

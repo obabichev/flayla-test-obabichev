@@ -1,6 +1,6 @@
-import {getQuestionsListService} from '../service/questions';
+import {getQuestionsListService} from '../../service/questions';
 import {setQuestionsListByCategoryId} from './questions.actions';
-import {generateId} from '../util/id';
+import {generateId} from '../../util/id';
 
 export const getQuestionsListThunk = (categoryId, amount) => dispatch => {
     return getQuestionsListService(categoryId, amount)

@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import {HORIZONTAL_LOADER_ID} from '../actions/loading.constants';
+import {HORIZONTAL_LOADER_ID} from '../actions/loading/loading.constants';
 
 const loaderIdPropsSelector = (state, {loaderId = HORIZONTAL_LOADER_ID}) => loaderId;
 

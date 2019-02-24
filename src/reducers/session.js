@@ -1,4 +1,4 @@
-import {SET_SESSION_TOKEN_ACTION} from '../actions/session.types';
+import {SET_SESSION_TOKEN_ACTION} from '../actions/session/session.types';
 export const session = (state = null, action = {}) => {
     const {type, payload} = action;
 

@@ -1,0 +1,5 @@
+export const ERROR_SET_ACTION = 'ERROR_SET_ACTION';
+
+export const ERROR_DEL_ACTION = 'ERROR_DEL_ACTION';
+
+export const ERROR_ACTION = 'ERROR_ACTION';
