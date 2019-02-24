@@ -10,10 +10,6 @@ const request = ({url, method, body, params}) => {
         headers: {},
     })
         .then(response => {
-            // if (response.status !== 200 && response.status !== 201) {
-            //     throw networkErrorException(response.status, response.statusText);
-            // }
-
             return response.json();
         })
         .then((result) => waitPromise(result));
@@ -23,7 +19,7 @@ const joinParams = params => {
     return Object.keys(params).map(key => key + '=' + params[key]).join('&');
 };
 
-const waitPromise = (result) => new Promise(r => setTimeout(() => r(result), 1));
+const waitPromise = (result) => new Promise(r => setTimeout(() => r(result), 500));
 
 export const getRequest = async (path, params = {}) => {
     const url = `${baseUrl}${path}`;

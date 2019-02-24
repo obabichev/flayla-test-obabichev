@@ -41,7 +41,10 @@ export class QuestionsListComponent extends Component {
     render() {
         return <div>
             {this.renderQuestions()}
-            {this.renderDownloadMoreButton()}
+            <div className="questions-list__add-more-container">
+                {this.renderDownloadMoreButton()}
+                {this.renderLoader()}
+            </div>
         </div>;
     }
 
@@ -49,7 +52,7 @@ export class QuestionsListComponent extends Component {
         const {questions} = this.props;
 
         return <table className="questions-list__table">
-            <tbody >
+            <tbody>
             {questions.map(this.renderQuestionCard)}
             </tbody>
         </table>;
@@ -66,13 +69,23 @@ export class QuestionsListComponent extends Component {
     };
 
     renderDownloadMoreButton = () => {
-        const {questionsToDownloadCount} = this.props;
-        if (!questionsToDownloadCount > 0) {
+        const {questionsToDownloadCount, isLoading} = this.props;
+        if (!questionsToDownloadCount > 0 || isLoading) {
             return null;
         }
         return <Button onClick={this.onDownloadMoreClick}>
             {questionsToDownloadCount} more...
         </Button>;
+    };
+
+    renderLoader = () => {
+        const {isLoading} = this.props;
+
+        if (!isLoading) {
+            return null;
+        }
+
+        return <div className="questions-list__loader"/>;
     };
 
     static propTypes = {

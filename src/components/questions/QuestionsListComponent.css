@@ -37,3 +37,30 @@
     border: none;
 }
 
+.questions-list__add-more-container {
+    height: 40px;
+}
+
+.questions-list__loader {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #f8f6ff;
+    background-image: repeating-linear-gradient(
+            -45deg,
+            #e6e5ed,
+            #e6e5ed 11px,
+            #fff 10px,
+            #fff 20px /* determines size */
+    );
+    background-size: 28px 28px;
+    animation: move .5s linear infinite;
+}
+
+@keyframes move {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 14px 0;
+    }
+}

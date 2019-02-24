@@ -2,17 +2,26 @@ import {resetSessionTokenService, retrieveSessionTokenService} from '../service/
 import {setSessionTokenAction} from './session.actions';
 import {getLocalSession, removeLocalSession, setLocalSession} from '../helpers/localStorage/session';
 
-export const retrieveSessionTokenThunk = () => dispatch => {
+export const actualizeSessionTokenThunk = () => dispatch => {
 
     const storedSession = getLocalSession();
 
     if (storedSession) {
         return resetSessionTokenService()
             .then((data) => {
+                // If we have problem with token (expired or smth else) just delete it and get new one
+                if (data['response_code'] !== 0) {
+                    removeLocalSession();
+                    return dispatch(retrieveSessionTokenThunk());
+                }
                 dispatch(setSessionTokenAction(storedSession));
             })
     }
 
+    return dispatch(retrieveSessionTokenThunk());
+};
+
+const retrieveSessionTokenThunk = () => dispatch => {
     return retrieveSessionTokenService()
         .then(session => {
             setLocalSession(session);

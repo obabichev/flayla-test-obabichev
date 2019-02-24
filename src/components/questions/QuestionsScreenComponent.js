@@ -39,11 +39,14 @@ export class QuestionsScreenComponent extends Component {
 
     render() {
         const {selectedOption} = this.state;
-        const {categoriesSelectInput} = this.props;
+        const {categoriesSelectInput, isLoading} = this.props;
 
         return <div>
             <div className="questions-screen__select-container">
                 <Select
+                    isDisabled={isLoading}
+                    isLoading={isLoading}
+                    placeholder={this.selectPlaceholder()}
                     value={selectedOption}
                     onChange={this.handleChange}
                     options={categoriesSelectInput}
@@ -52,6 +55,15 @@ export class QuestionsScreenComponent extends Component {
             {this.renderQuestionsList()}
         </div>
     }
+
+    selectPlaceholder = () => {
+        const {isLoading} = this.props;
+        if (isLoading) {
+            return 'Loading...';
+        } else {
+            return 'Select category...';
+        }
+    };
 
     renderQuestionsList = () => {
         const {selectedOption} = this.state;

@@ -1,23 +1,33 @@
 import React, {Component} from 'react';
 import {MainRouter} from '../router/MainRouter';
 import {FooterComponent} from './FooterComponent';
+import {HorizontalLoader} from '../basic/HorizontalLoader';
 
 export class BlankScreenComponent extends Component {
 
     componentDidMount() {
-        const {session, retrieveSessionToken} = this.props;
+        const {session, actualizeSessionToken} = this.props;
         if (!session) {
-            retrieveSessionToken();
+            actualizeSessionToken();
         }
     }
 
     render() {
-
         return <div>
+            {this.renderLoader()}
             {this.renderContent()}
             <FooterComponent/>
         </div>;
     }
+
+    renderLoader = () => {
+        const {isLoading} = this.props;
+
+        if (!isLoading) {
+            return null;
+        }
+        return <HorizontalLoader/>;
+    };
 
     renderContent = () => {
         const {session} = this.props;
@@ -26,7 +36,6 @@ export class BlankScreenComponent extends Component {
 
         if (!session) {
             return <div>
-                BlankScreenComponent
             </div>;
         }
 

@@ -1,12 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-export class Icon extends Component {
-
-    render() {
-        const {icon, width = 16, height = 16} = this.props;
-        return <div style={{width, height}}>
-            <img width={width} height={height} src={`/icons/${icon}.png`}/>
-        </div>;
-    }
-
-}
+export const Icon = ({icon, width = 16, height = 16}) => <div style={{width, height}}>
+    <img alt="icon"
+         width={width} height={height}
+         src={`/icons/${icon}.png`}/>
+</div>;
