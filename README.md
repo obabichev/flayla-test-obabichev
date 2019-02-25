@@ -1,5 +1,10 @@
 My solution of React Developer Test Assignment
 
+## Run project 
+git clone https://github.com/obabichev/flayla-test-obabichev.git
+cd flayla-test-obabichev/
+npm start
+
 ## What I did
 - Retrieve new/reset old Token to avoid downloading the same data twice
 - Created page with drop-down-selector of category and table of downloaded questions
