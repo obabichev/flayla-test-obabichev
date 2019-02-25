@@ -2,7 +2,9 @@ My solution of React Developer Test Assignment
 
 ## Run project 
 git clone https://github.com/obabichev/flayla-test-obabichev.git
+
 cd flayla-test-obabichev/
+
 npm start
 
 ## What I did
